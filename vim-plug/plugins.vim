@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " File Explorer
   Plug 'scrooloose/NERDTree'
+  Plug 'chxuan/vim-edit'
   Plug 'jiangmiao/auto-pairs'
   Plug 'joshdick/onedark.vim'
   Plug 'vim-airline/vim-airline'
@@ -14,6 +15,13 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'chxuan/vim-buffer'
   Plug 'preservim/tagbar'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'chxuan/cpp-mode'
+  Plug 'octol/vim-cpp-enhanced-highlight'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdcommenter'
+  Plug 'rhysd/vim-clang-format'
 
 
 call plug#end()
@@ -49,4 +57,21 @@ nnoremap <silent> <leader>t :TagbarToggle<cr>
 
 " ctrlpvim
 let g:ctrl_map = '<c-p>'
+
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-i>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
 
