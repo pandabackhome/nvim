@@ -19,13 +19,22 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+  Plug 'tpope/vim-fugitive'
   Plug 'junegunn/fzf.vim'
   Plug 'preservim/nerdcommenter'
   Plug 'rhysd/vim-clang-format'
-
+  Plug 'folke/tokyonight.nvim'
+  Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
+" Example config in VimScript
+let g:tokyonight_style = "night"
+let g:tokyonight_italic_functions = 1
+let g:tokyonight_sidebars = [ "qf", "vista_kind", "terminal", "packer" ]
+
+" Load the colorscheme
+colorscheme tokyonight
 
 " nerdtree
 "nnoremap <silent> <leader>n :NERDTreeToggle<cr>
@@ -39,8 +48,7 @@ nnoremap <silent> <c-m> :NextBuffer<cr>
 nnoremap <silent> <leader>d :CloseBuffer<cr>
 nnoremap <silent> <leader>D :BufOnly<cr>
 
-" airline
-" let g:airline_theme="gruvbox"
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
