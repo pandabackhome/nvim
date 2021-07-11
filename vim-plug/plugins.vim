@@ -25,6 +25,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'rhysd/vim-clang-format'
   Plug 'folke/tokyonight.nvim'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'cdelledonne/vim-cmake'
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
+  Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -82,4 +85,9 @@ autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
 " Toggle auto formatting:
 nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+let g:cmake_link_compile_commands = 1
+"nmap <leader>cg :CMakeGenerate<cr>
+"nmap <leader>cb :CMakeBuild<cr>
+"nmap <leader>cg :CMakeGenerate<cr>
 
